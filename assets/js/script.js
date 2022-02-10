@@ -232,6 +232,25 @@ var saveTasks = function(){
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+var loadTasks = function(){
+    var savedTasks = localStorage.getItem("tasks");
+    //if there are no tasks, set tasks to an empty array and return out of the function
+    if(!savedTasks) {
+        return false;
+    }
+    console.log("Saved tasks found!")
+    //else, louf up saved tasks
+
+    //parse into array of objects
+    savedTasks = JSON.parse(savedTask);
+
+    //loop through savedTasks array
+    for (var i = 0; i <savedTasks.length; i++){
+        //pass each task object into the 'createdTaskEl()' function
+        createTaskEl(savedTasks[i]);
+    }
+};
+
 // to create a new task
 pageContentEl.addEventListener("click", taskButtonHandler);
 
