@@ -4,7 +4,7 @@ var pageContentEl = document.querySelector("#page-content");
 var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
 var taskInProgressEl = document.querySelector("#tasks-in-progress");
-var tasksCompletedEl = document.querySelector("#task-completed")
+var tasksCompletedEl = document.querySelector("#tasks-completed")
 
 var taskFormHandler = function(event) {
     event.preventDefault();
@@ -80,24 +80,24 @@ var createTaskActions = function(taskId) {
     actionContainerEl.appendChild(deleteButtonEl);
     //create change status dropdown
     var statusSelectEl = document.createElement("select");
-    statusSelectEl.className = "select-status";
     statusSelectEl.setAttribute("name", "status-change");
     statusSelectEl.setAttribute("data-task-id", taskId);
-    actionContainerEl.appendChild(statusSelectEl);
-    // create status option
-    var statusChoices = ["To Do", "In Progress", "Completed"];
+    statusSelectEl.className = "select-status";
+     actionContainerEl.appendChild(statusSelectEl);
+     // create status options
+     var statusChoices = ["To Do", "In Progress", "Completed"];
 
-    for(var i = 0; i <statusSelectEl.length; i++){
-        //create option element
-        var statusOptionEl = document.createElement("option");
-        statusOptionEl.textContent = statusChoices[i];
-        statusOptionEl.setAttribute("value", statusChoices[i]);
+     for (var i = 0; i < statusChoices.length; i++) {
+    // create option element
+    var statusOptionEl = document.createElement("option");
+    statusOptionEl.setAttribute("value", statusChoices[i]);
+    statusOptionEl.textContent = statusChoices[i];
 
-        //append to select
-        statusSelectEl.appendChild(statusOptionEl);
-    }
+    // append to select
+    statusSelectEl.appendChild(statusOptionEl);
+  }
 
-    return actionContainerEl;
+  return actionContainerEl;
 };
 
 var completeEditTask = function(taskName, taskType, taskId) {
@@ -151,7 +151,7 @@ var taskStatusChangeHandler = function(event) {
     } else if (statusValue === "completed") {
       tasksCompletedEl.appendChild(taskSelected);
     }
-};
+  };
 
   var editTask = function(taskId) {
     console.log(taskId);
